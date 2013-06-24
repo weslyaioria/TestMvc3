@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data.Entity;
+//using System.Data.Entity.DbModelBuilder;
+
+namespace SIMRSApotek.Models
+{
+    public class PasienContext : DbContext
+    {
+        public DbSet<Pasien> pasiens { get; set; }
+        public DbSet<Periksa> Periksas { get; set; }
+        public DbSet<tvPeriksa> tvPeriksas { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Pasien>().ToTable("Pasiens");
+            modelBuilder.Entity<Periksa>().ToTable("Periksas");
+            base.OnModelCreating(modelBuilder);
+        }
+
+    }
+
+}
